@@ -38,13 +38,11 @@ def getData():
     return name
     
 def plot_graph(name,x,y,sx,ex,sy,ey,xlabel,ylabel):
-    #labels = ["Ceph", "dalmore", "Whiskey", "dalmore nfs", "Whiskey VM", "yomitan nfs"]
     plt.xlim(sx,ex)
     plt.xlabel(str(xlabel))
     plt.ylim(sy,ey)
     plt.ylabel(str(ylabel))
     for i in range(len(x)):
-        #plt.plot(x[i],y[i], label=labels[i])
         plt.plot(x[i],y[i], label=FILES[i].split("/")[3])#markersize=0.5)
     plt.legend()
     plt.savefig("./"+str(name)+".pdf")
@@ -55,8 +53,6 @@ def openGraph(name):
     subprocess.check_call(cmd)
 
 if __name__ == "__main__":
-    #for i in range(len(FILES[0:])):
-    #    print(FILES[i].split("/")[3])
     name = getData()
     if(input("画像を表示しますか(Y or N): ")=="y"):
         openGraph(name)
